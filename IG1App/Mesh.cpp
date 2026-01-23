@@ -2,6 +2,8 @@
 
 using namespace std;
 using namespace glm;
+//#include <glm/ext/scalar_constants.hpp>
+#include <glm/gtc/constants.hpp>
 
 // Placeholder for the pending index of a GPU object
 constexpr GLuint NONE = numeric_limits<GLuint>::max();
@@ -110,4 +112,27 @@ Mesh::createRGBAxes(GLdouble l)
 	mesh->vColors.emplace_back(0.0, 0.0, 1.0, 1.0);
 
 	return mesh;
+}
+
+Mesh* Mesh::generateRegularPolygon(GLuint numVertex, GLdouble radius)
+{
+	Mesh* result = new Mesh();
+
+
+	//result->mPrimitive = GL_LINE_LOOP;
+	result->mNumVertices = numVertex;
+	result->vVertices.reserve(numVertex);
+
+	const GLdouble angleFactor = 360 / numVertex;
+	const GLdouble start = 90;
+
+	for (int i = 0; i < numVertex; ++i)
+	{
+		GLdouble x = radius * glm::cos(glm::radians(start + i * angleFactor));
+		GLdouble y = radius * glm::sin(glm::radians(start + i * angleFactor));
+
+		result->vVertices.emplace_back(x,y,0);
+	}
+
+	return result;
 }

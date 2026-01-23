@@ -11,6 +11,8 @@ class Mesh
 public:
 	static Mesh* createRGBAxes(GLdouble l); // creates a new 3D-RGB axes mesh
 
+	static Mesh* generateRegularPolygon(GLuint numVertex, GLdouble radius);
+
 	Mesh();
 	virtual ~Mesh();
 
