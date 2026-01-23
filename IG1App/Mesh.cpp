@@ -119,14 +119,14 @@ Mesh* Mesh::generateRegularPolygon(GLuint numVertex, GLdouble radius)
 	Mesh* result = new Mesh();
 
 
-	//result->mPrimitive = GL_LINE_LOOP;
+	result->mPrimitive = GL_LINE_LOOP;
 	result->mNumVertices = numVertex;
-	result->vVertices.reserve(numVertex);
+	result->vVertices.reserve(result->mNumVertices);
 
 	const GLdouble angleFactor = 360 / numVertex;
 	const GLdouble start = 90;
 
-	for (int i = 0; i < numVertex; ++i)
+	for (int i = 0; i < result->mNumVertices; ++i)
 	{
 		GLdouble x = radius * glm::cos(glm::radians(start + i * angleFactor));
 		GLdouble y = radius * glm::sin(glm::radians(start + i * angleFactor));
