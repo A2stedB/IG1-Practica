@@ -1,6 +1,8 @@
 #include "IG1App.h"
 
 #include <iostream>
+#include "Scene1.h"
+#include "Scene0.h"
 
 using namespace std;
 
@@ -55,10 +57,16 @@ IG1App::init()
 	// allocate memory and resources
 	mViewPort = new Viewport(mWinW, mWinH);
 	mCamera = new Camera(mViewPort);
-	mScenes.push_back(new Scene);
+	mScenes.push_back(new Scene0);
+	mScenes.push_back(new Scene1);
 
+
+	for (auto scene : mScenes)
+    {
+        scene->init();
+	}
 	mCamera->set2D();
-	mScenes[0]->init();
+	//mScenes[0]->init();
 	mScenes[mCurrentScene]->load();
 }
 

@@ -11,27 +11,27 @@
 
 class Scene
 {
-public:
-	Scene() = default;
-	virtual ~Scene();
+    public:
+        Scene() = default;
+        virtual ~Scene();
 
-	Scene(const Scene& s) = delete;            // no copy constructor
-	Scene& operator=(const Scene& s) = delete; // no copy assignment
+        Scene(const Scene& s) = delete;            // no copy constructor
+        Scene& operator=(const Scene& s) = delete; // no copy assignment
 
-	void init();
+        virtual void init();
 
-	void render(Camera const& cam) const;
+        void render(Camera const& cam) const;
 
-	// load or unload scene data into the GPU
-	void load();
-	void unload();
+        // load or unload scene data into the GPU
+        void load();
+        void unload();
 
-protected:
-	void destroy();
-	void setGL();
-	void resetGL();
+    protected:
+        void destroy();
+        void setGL();
+        void resetGL();
 
-	std::vector<Abs_Entity*> gObjects; // Entities (graphic objects) of the scene
+        std::vector<Abs_Entity*> gObjects; // Entities (graphic objects) of the scene
 };
 
 #endif //_H_Scene_H_

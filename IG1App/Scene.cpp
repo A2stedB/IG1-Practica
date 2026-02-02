@@ -2,7 +2,7 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-
+#include "RegularPolygon.h"
 using namespace glm;
 
 void
@@ -15,17 +15,17 @@ Scene::init()
 	// Textures
 
 	// Graphics objects (entities) of the scene
-	gObjects.push_back(new RGBAxes(400.0));
 
-	RegularPolygon* polygon = new RegularPolygon(7, 200);
-	polygon->setColor(1, 0, 1, 1);
-	gObjects.push_back(polygon);
+	//gObjects.push_back(new RGBAxes(400.0));
+	//RegularPolygon* polygon = new RegularPolygon(7, 200);
+	//polygon->setColor(1, 0, 1, 1);
+	//gObjects.push_back(polygon);
 
-	RegularPolygon* circle = new RegularPolygon(360, 200);
+	//RegularPolygon* circle = new RegularPolygon(360, 200);
 	//circle->setColor(1, 1, 0, 1);
-	gObjects.push_back(circle);
+	//gObjects.push_back(circle);
 
-	polygon->setColor(1, 0, 1, 1);
+	//polygon->setColor(1, 0, 1, 1);
 }
 
 Scene::~Scene()
