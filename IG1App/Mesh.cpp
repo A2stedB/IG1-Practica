@@ -134,5 +134,12 @@ Mesh* Mesh::generateRegularPolygon(GLuint numVertex, GLdouble radius)
 		result->vVertices.emplace_back(x,y,0);
 	}
 
+	//result->vColors.reserve(result->mNumVertices);
+
+	//for (auto& e : result->vColors)
+	//{
+	//	e = glm::vec4(1, 1, 1, 1);
+	//}
+
 	return result;
 }

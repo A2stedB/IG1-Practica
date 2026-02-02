@@ -50,39 +50,5 @@ RGBAxes::RGBAxes(GLdouble l)
 	mMesh = Mesh::createRGBAxes(l);
 }
 
-SingleColorEntity::SingleColorEntity(glm::vec4 color = {1,1,1,1}):
-	mColor(color)
-{
-	mShader = Shader::get("simple");
-}
 
-glm::vec4 SingleColorEntity::getColor()
-{
-	return mColor;
-}
 
-void SingleColorEntity::setColor(GLuint r, GLuint g, GLuint b, GLuint a)
-{
-	mColor.r = r;
-	mColor.g = g;
-	mColor.b = b;
-	mColor.a = a;
-}
-
-void SingleColorEntity::render(const glm::mat4& modelViewMat) const
-{
-	if (mMesh != nullptr)
-	{
-		mat4 aMat = modelViewMat * mModelMat; // glm matrix multiplication
-		mShader->setUniform("color", mColor);
-		mShader->use();
-		upload(aMat);
-		mMesh->render();
-	}
-}
-
-RegularPolygon::RegularPolygon(GLuint numVertex, GLdouble radius):
-	SingleColorEntity()
-{
-	mMesh = Mesh::generateRegularPolygon(numVertex,radius);
-}
