@@ -8,39 +8,43 @@
 
 class Mesh
 {
-public:
-	static Mesh* createRGBAxes(GLdouble l); // creates a new 3D-RGB axes mesh
+    public:
+        static Mesh* createRGBAxes(GLdouble l); // creates a new 3D-RGB axes mesh
 
-	static Mesh* generateRegularPolygon(GLuint numVertex, GLdouble radius);
+        static Mesh* generateRegularPolygon(GLuint numVertex, GLdouble radius);
+        static Mesh* generateRectangle(GLdouble w, GLdouble h);
+        static Mesh* generateRGBRectangle(GLdouble w, GLdouble h);
 
-	Mesh();
-	virtual ~Mesh();
+        friend class RGBTriangle; // uffff
 
-	Mesh(const Mesh& m) = delete;            // no copy constructor
-	Mesh& operator=(const Mesh& m) = delete; // no copy assignment
+    public:
+        Mesh();
+        virtual ~Mesh();
 
-	virtual void render() const;
+        Mesh(const Mesh& m) = delete;            // no copy constructor
+        Mesh& operator=(const Mesh& m) = delete; // no copy assignment
 
-	GLuint size() const { return mNumVertices; }; // number of elements
-	std::vector<glm::vec3> const& vertices() const { return vVertices; };
-	std::vector<glm::vec4> const& colors() const { return vColors; };
+        virtual void render() const;
 
-	void load();
-	void unload();
+        GLuint size() const { return mNumVertices; }; // number of elements
+        std::vector<glm::vec3> const& vertices() const { return vVertices; };
+        std::vector<glm::vec4> const& colors() const { return vColors; };
 
-protected:
-	GLuint mPrimitive =
-	  GL_TRIANGLES;          // graphic primitive: GL_POINTS, GL_LINES, GL_TRIANGLES, ...
-	GLuint mNumVertices = 0; // number of elements ( = vVertices.size())
-	std::vector<glm::vec3> vVertices; // vertex array
-	std::vector<glm::vec4> vColors;   // color array
-	virtual void draw() const;
+        void load();
+        void unload();
 
-	GLuint mVAO;  // vertex array object
+    protected:
+        GLuint mPrimitive = GL_TRIANGLES; // graphic primitive: GL_POINTS, GL_LINES, GL_TRIANGLES, ...
+        GLuint mNumVertices = 0;          // number of elements ( = vVertices.size())
+        std::vector<glm::vec3> vVertices; // vertex array
+        std::vector<glm::vec4> vColors;   // color array
+        virtual void draw() const;
 
-private:
-	GLuint mVBO;  // vertex buffer object
-	GLuint mCBO;  // color buffer object
+        GLuint mVAO; // vertex array object
+
+    private:
+        GLuint mVBO; // vertex buffer object
+        GLuint mCBO; // color buffer object
 };
 
 #endif //_H_Scene_H_
