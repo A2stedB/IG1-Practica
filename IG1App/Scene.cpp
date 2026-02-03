@@ -80,3 +80,11 @@ Scene::render(Camera const& cam) const
 	for (Abs_Entity* el : gObjects)
 		el->render(cam.viewMat());
 }
+
+void Scene::update()
+{
+    for (Abs_Entity* obj : gObjects)
+    {
+        obj->update();
+    }
+}

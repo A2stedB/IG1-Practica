@@ -5,4 +5,5 @@ class RGBTriangle : public EntityWithColors
 {
     public:
         RGBTriangle(GLdouble);
+        void update() override;
 };

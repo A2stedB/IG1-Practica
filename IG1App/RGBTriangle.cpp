@@ -1,5 +1,5 @@
 #include "RGBTriangle.h"
-
+#include <iostream>
 RGBTriangle::RGBTriangle(GLdouble radius):EntityWithColors()
 {
     mMesh = Mesh::generateRegularPolygon(3,radius);
@@ -7,4 +7,9 @@ RGBTriangle::RGBTriangle(GLdouble radius):EntityWithColors()
     mMesh->vColors.emplace_back(1, 0, 0, 1);
     mMesh->vColors.emplace_back(0, 1, 0, 1);
     mMesh->vColors.emplace_back(0, 0, 1, 1);
+}
+
+void RGBTriangle::update()
+{
+    std::cout << "ROTATING" << std::endl;
 }
