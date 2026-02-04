@@ -35,6 +35,16 @@ IG1App::run() // enters the main event processing loop
 
 	// IG1App main loop
 	while (!glfwWindowShouldClose(mWindow)) {
+
+		if (mUpdateEnabled)
+        {   
+			if (glfwGetTime() >= mNextUpdate)
+            {
+                std::cout << glfwGetTime() << std::endl;
+                mScenes[mCurrentScene]->update();
+                mNextUpdate = glfwGetTime() + FRAME_DURATION;
+			}
+		}
 		// Redisplay the window if needed
 		if (mNeedsRedisplay) {
 			display();
@@ -42,7 +52,11 @@ IG1App::run() // enters the main event processing loop
 		}
 
 		// Stop and wait for new events
-		glfwWaitEvents();
+        if (mUpdateEnabled)
+        {
+            glfwWaitEventsTimeout(mNextUpdate - glfwGetTime());
+		}
+        else glfwWaitEvents();
 	}
 
 	destroy();
@@ -174,7 +188,7 @@ IG1App::key(unsigned int key)
 			mCamera->set2D();
 			break;
         case 'u':
-            mScenes[mCurrentScene]->update();
+            mUpdateEnabled = !mUpdateEnabled;  
             break;
 		default:
 			if (key >= '0' && key <= '9') {

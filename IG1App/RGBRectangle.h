@@ -5,4 +5,5 @@ class RGBRectangle : public EntityWithColors
     public:
         RGBRectangle(GLdouble, GLdouble);
         void render(const glm::mat4&) const override;
+        void update() override;
 };

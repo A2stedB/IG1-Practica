@@ -9,6 +9,8 @@
 #include "Scene.h"
 #include "Viewport.h"
 
+constexpr double FRAME_DURATION = 0.0166;
+
 class IG1App
 {
 public:
@@ -58,6 +60,9 @@ protected:
 	std::vector<Scene*> mScenes;
 	size_t mCurrentScene = 0;
 
+
+	bool mUpdateEnabled = false;
+    double mNextUpdate = 0;
 	bool mNeedsRedisplay = true;   // main event processing loop
 	GLFWwindow* mWindow = nullptr; // window's handle
 	int mWinW = 800;               // window's width

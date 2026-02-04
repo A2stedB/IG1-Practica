@@ -15,8 +15,7 @@ void RGBRectangle::render(const glm::mat4& modelViewMat) const
         glEnable(GL_CULL_FACE);
         //glEnable(GL_POLYGON_OFFSET_LINE);
         glCullFace(GL_FRONT);
-        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); // Wireframe
-        //glPolygonMode(GL_BACK, GL_FILL); // Solid (Default)
+        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         mMesh->render();
 
 
@@ -28,5 +27,11 @@ void RGBRectangle::render(const glm::mat4& modelViewMat) const
         // Resetear estado?
         glDisable(GL_CULL_FACE);
     }
+}
+
+void RGBRectangle::update() 
+{
+    GLdouble increment = 1.0;
+
 }
 
