@@ -14,6 +14,8 @@ class Mesh
         static Mesh* generateRegularPolygon(GLuint numVertex, GLdouble radius);
         static Mesh* generateRectangle(GLdouble w, GLdouble h);
         static Mesh* generateRGBRectangle(GLdouble w, GLdouble h);
+        static Mesh* generateCube(GLdouble length);
+        static Mesh* generateRGBCubeTriangles(GLdouble length);
 
         friend class RGBTriangle; // uffff
 

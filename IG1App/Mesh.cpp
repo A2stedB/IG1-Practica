@@ -181,3 +181,75 @@ Mesh* Mesh::generateRGBRectangle(GLdouble w, GLdouble h)
 
     return mesh;
 }
+
+Mesh* Mesh::generateCube(GLdouble length)
+{
+	// 1.(0, 0, 0)
+	// 2.(length, 0, 0)
+	// 3.(0, length, 0)
+	// 4.(length, length, 0)
+	// 5.(length, length, length)
+	// 6.(length, 0, length)
+	// 7.(0, 0, length)
+	// 8.(0, length, length)
+
+    Mesh* cube = new Mesh();
+    cube->mPrimitive = GL_TRIANGLES;
+    cube->mNumVertices = 9;
+    cube->vVertices.reserve(cube->mNumVertices);
+
+    cube->vVertices.emplace_back(0, 0, 0);
+    cube->vVertices.emplace_back(length, 0, 0);
+    cube->vVertices.emplace_back(0, length, 0);
+
+    cube->vVertices.emplace_back(0, length, 0);
+    cube->vVertices.emplace_back(length, length, 0);
+    cube->vVertices.emplace_back(length, 0, 0);
+
+    cube->vVertices.emplace_back(length, 0, 0);
+    cube->vVertices.emplace_back(length, length, 0);
+    cube->vVertices.emplace_back(length, 0, length);
+
+    cube->vVertices.emplace_back(length, length, length);
+    cube->vVertices.emplace_back(length, length, 0);
+    cube->vVertices.emplace_back(length, 0, length);
+
+    //cube->vVertices.emplace_back(length, length, length);
+    //cube->vVertices.emplace_back(length, 0, length);
+    //cube->vVertices.emplace_back(0, length, length);
+
+    //cube->vVertices.emplace_back(0, length, length);
+    //cube->vVertices.emplace_back(length, 0, length);
+    //cube->vVertices.emplace_back(0, 0, length);
+
+    //cube->vVertices.emplace_back(0, 0, length);
+    //cube->vVertices.emplace_back(0, length, length);
+    //cube->vVertices.emplace_back(0, 0, 0);
+
+    //cube->vVertices.emplace_back(0, 0, 0);
+    //cube->vVertices.emplace_back(0, length, 0);
+    //cube->vVertices.emplace_back(0, length, length);
+
+    //cube->vVertices.emplace_back(0, length, 0);
+    //cube->vVertices.emplace_back(length, length, length);
+    //cube->vVertices.emplace_back(length, length, 0);
+
+    //cube->vVertices.emplace_back(0, length, 0);
+    //cube->vVertices.emplace_back(length, length, length);
+    //cube->vVertices.emplace_back(0, length, length);
+
+    //cube->vVertices.emplace_back(0, 0, 0);
+    //cube->vVertices.emplace_back(length, 0, 0);
+    //cube->vVertices.emplace_back(length, 0, length);
+
+    //cube->vVertices.emplace_back(length, 0, 0);
+    //cube->vVertices.emplace_back(length, 0, length);
+    //cube->vVertices.emplace_back(0, 0, length);
+
+    return cube;
+}
+
+Mesh* Mesh::generateRGBCubeTriangles(GLdouble length)
+{
+    return nullptr;
+}
