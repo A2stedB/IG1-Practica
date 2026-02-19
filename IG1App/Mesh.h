@@ -32,15 +32,11 @@ class Mesh
         std::vector<glm::vec3> const& vertices() const { return vVertices; };
         std::vector<glm::vec4> const& colors() const { return vColors; };
 
-        void load();
-        void unload();
+	static Mesh* generateRectangleTextCor(GLdouble w, GLdouble h);
 
-    protected:
-        GLuint mPrimitive = GL_TRIANGLES; // graphic primitive: GL_POINTS, GL_LINES, GL_TRIANGLES, ...
-        GLuint mNumVertices = 0;          // number of elements ( = vVertices.size())
-        std::vector<glm::vec3> vVertices; // vertex array
-        std::vector<glm::vec4> vColors;   // color array
-        virtual void draw() const;
+
+	Mesh();
+	virtual ~Mesh();
 
         GLuint mVAO; // vertex array object
 
