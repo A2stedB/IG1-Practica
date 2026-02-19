@@ -13,7 +13,6 @@ void RGBRectangle::render(const glm::mat4& modelViewMat) const
         mShader->use();
         upload(aMat);
         glEnable(GL_CULL_FACE);
-        //glEnable(GL_POLYGON_OFFSET_LINE);
         glCullFace(GL_FRONT);
         glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         mMesh->render();

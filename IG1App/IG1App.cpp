@@ -43,7 +43,7 @@ IG1App::run() // enters the main event processing loop
             {
                 //std::cout << glfwGetTime() << std::endl;
                 mScenes[mCurrentScene]->update();
-                mNextUpdate += FRAME_DURATION;
+                mNextUpdate = glfwGetTime() + FRAME_DURATION;
                 mNeedsRedisplay = true; // fuk
 			}
 		}
@@ -57,7 +57,8 @@ IG1App::run() // enters the main event processing loop
         if (mUpdateEnabled)
         {
             double care = mNextUpdate - glfwGetTime();
-            if (care < 0) care = 0;
+			std::cout << care << std::endl;
+            //if (care < 0) care = 0;
             glfwWaitEventsTimeout(care);
 		}
         else glfwWaitEvents();

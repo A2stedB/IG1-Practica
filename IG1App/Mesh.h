@@ -15,7 +15,7 @@ class Mesh
         static Mesh* generateRectangle(GLdouble w, GLdouble h);
         static Mesh* generateRGBRectangle(GLdouble w, GLdouble h);
         static Mesh* generateCube(GLdouble length);
-        static Mesh* generateRGBCubeTriangles(GLdouble length);
+        static Mesh* generateRGBCube(GLdouble length);
 
         friend class RGBTriangle; // uffff
 
