@@ -4,10 +4,10 @@ using namespace glm;
 
 EntityWithTexture::EntityWithTexture(const char* texture,const char* shader) :
     mModulate(false),
-    mTexture(nullptr)
+    mTexture(new Texture())
 {
     //mTexture = new Texture();
-    //mTexture->load(texture);
+    mTexture->load(texture);
 	mShader = Shader::get(shader);
 }
 

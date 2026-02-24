@@ -29,6 +29,8 @@ public:
 
 	static Mesh* generateBoxOutline(GLdouble length);
 
+	static Mesh* generateBoxOutlineTexCor(GLdouble length);
+
 
 	Mesh();
 	virtual ~Mesh();

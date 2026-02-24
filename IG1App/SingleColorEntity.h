@@ -2,7 +2,7 @@
 class SingleColorEntity :
     public Abs_Entity
 {
-private: 
+protected: 
     glm::vec4 mColor;
 
 

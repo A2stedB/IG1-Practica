@@ -442,16 +442,34 @@ Mesh* Mesh::generateRectangleTextCor(GLdouble w, GLdouble h, GLuint rw, GLuint r
 Mesh* Mesh::generateBoxOutline(GLdouble length)
 {
 	Mesh* ret = new Mesh();
+	ret->mNumVertices = 10;
 	ret->mPrimitive = GL_TRIANGLE_STRIP;
 
 	GLdouble l = length / 2;
-	
+	ret->vVertices.reserve(10);
+
 	ret->vVertices.emplace_back(-l,-l,l);
 	ret->vVertices.emplace_back(-l,l,l);
 	ret->vVertices.emplace_back(l,-l,l);
 
+	ret->vVertices.emplace_back(l, l, l);
+	ret->vVertices.emplace_back(l, -l, -l);
+	ret->vVertices.emplace_back(l, l, -l);
 
-	return nullptr;
+	ret->vVertices.emplace_back(-l, -l, -l);
+	ret->vVertices.emplace_back(-l, l, -l);
+	ret->vVertices.emplace_back(-l, -l, l);
+
+	ret->vVertices.emplace_back(-l, l, l);
+
+	return ret;
+}
+
+Mesh* Mesh::generateBoxOutlineTexCor(GLdouble length)
+{
+	Mesh* ret = generateBoxOutline(length);
+
+	return ret;
 }
 
 
