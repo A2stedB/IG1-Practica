@@ -446,7 +446,7 @@ Mesh* Mesh::generateBoxOutline(GLdouble length)
 	ret->mPrimitive = GL_TRIANGLE_STRIP;
 
 	GLdouble l = length / 2;
-	ret->vVertices.reserve(10);
+	ret->vVertices.reserve(ret->mNumVertices);
 
 	ret->vVertices.emplace_back(-l,-l,l);
 	ret->vVertices.emplace_back(-l,l,l);
@@ -468,6 +468,56 @@ Mesh* Mesh::generateBoxOutline(GLdouble length)
 Mesh* Mesh::generateBoxOutlineTexCor(GLdouble length)
 {
 	Mesh* ret = generateBoxOutline(length);
+	ret->vTexCoords.emplace_back(0,0);
+	ret->vTexCoords.emplace_back(0,1);
+	ret->vTexCoords.emplace_back(1,0);
+	ret->vTexCoords.emplace_back(1,1);
+	ret->vTexCoords.emplace_back(0,0);
+	ret->vTexCoords.emplace_back(0,1);
+	ret->vTexCoords.emplace_back(1,0);
+	ret->vTexCoords.emplace_back(1,1);
+	ret->vTexCoords.emplace_back(0, 0);
+	ret->vTexCoords.emplace_back(0, 1);
+	return ret;
+}
+
+Mesh* Mesh::generateStar3D(GLdouble re, GLuint np, GLdouble h)
+{
+	Mesh* ret = new Mesh();
+
+	ret->mPrimitive = GL_TRIANGLE_FAN;
+	ret->mNumVertices = np + 1;
+
+	GLdouble ri = re / 2;
+
+	ret->vVertices.reserve(ret->mNumVertices);
+	ret->vVertices.emplace_back(0,0,0);
+
+	constexpr GLdouble PI = glm::pi<GLdouble>();
+
+	const GLdouble rotationFactor = 2 * PI / (ret->mNumVertices - 1);
+
+	GLdouble actualRotation = PI * 0.5; // Empieza en Pi medios (Pi/2)
+
+	for (int i = 0; i < ret->mNumVertices - 1; ++i)
+	{
+		GLdouble x = 0, y = 0;
+
+		x = re * cos(actualRotation);
+		y = re * sin(actualRotation);
+
+		if (i % 2 != 0)
+		{
+			x = ri * cos(actualRotation);
+			y = ri * sin(actualRotation);
+		}
+
+		ret->vVertices.emplace_back(x, y, h);
+		
+		actualRotation += rotationFactor;
+	}
+
+	ret->vVertices.emplace_back(re * cos(PI * 0.5),re * sin(PI * 0.5), h);
 
 	return ret;
 }

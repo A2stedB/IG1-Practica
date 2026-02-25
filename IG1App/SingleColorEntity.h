@@ -4,8 +4,6 @@ class SingleColorEntity :
 {
 protected: 
     glm::vec4 mColor;
-
-
 public:
     SingleColorEntity(glm::vec4 color = {1,1,1,1});
     glm::vec4 getColor() const

@@ -1,33 +1,46 @@
 #include "BoxOutline.h"
 #include "Mesh.h"
 using namespace glm;
-BoxOutline::BoxOutline(GLfloat length)
+
+BoxOutline::BoxOutline(GLfloat length, const char* outside_texture, const char* inside_texture) :EntityWithTexture(outside_texture)
 {
-	mMesh = Mesh::generateBoxOutline(length);
+	mMesh = Mesh::generateBoxOutlineTexCor(length);
+	_inside = new Texture();
+	_inside->load(inside_texture);
 }
 
-//void BoxOutline::render(const glm::mat4& modelViewMat) const
-//{
-//	if (mMesh != nullptr)
-//	{
-//		mat4 aMat = modelViewMat * mModelMat;
-//		mShader->use();
-//		upload(aMat);
-//
-//		//glEnable(GL_CULL_FACE);
-//		//glCullFace(GL_FRONT);   // Oculta la cara trasera para que los procesos que ocurran ahora solo afecten a la frontal
-//
-//		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);  // PUNTOS
-//		//mMesh->render();
-//
-//		//glCullFace(GL_BACK);  // Oculta la cara frontal para que los procesos que ocurran ahora solo afecten a la trasera
-//
-//		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);  // LINEAS
-//		mMesh->render();
-//
-//
-//		/*glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);*/
-//		//glDisable(GL_CULL_FACE);
-//
-//	}
-//}
+BoxOutline::~BoxOutline()
+{
+	delete _inside;
+}
+void BoxOutline::render(const glm::mat4& modelViewMat) const
+{
+
+	if (mMesh != nullptr && mShader != nullptr)
+	{
+
+		mat4 aMat = modelViewMat * mModelMat;
+
+		mShader->use();
+		glEnable(GL_CULL_FACE);
+		upload(aMat);
+		if (mTexture != nullptr && _inside != nullptr)
+		{
+			mShader->setUniform("modulate", mModulate);
+
+			glCullFace(GL_BACK);
+			_inside->bind();     // detras
+			mMesh->render();
+
+			glCullFace(GL_FRONT);
+			mTexture->bind();   // delante
+			mMesh->render();
+
+			_inside->unbind();
+			mTexture->unbind();
+		}
+		else mMesh->render();
+
+		glDisable(GL_CULL_FACE);
+	}
+}
