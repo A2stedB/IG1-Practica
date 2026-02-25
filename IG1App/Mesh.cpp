@@ -495,11 +495,11 @@ Mesh* Mesh::generateStar3D(GLdouble re, GLuint np, GLdouble h)
 
 	constexpr GLdouble PI = glm::pi<GLdouble>();
 
-	const GLdouble rotationFactor = 2 * PI / (ret->mNumVertices/2 - 1);
+	const GLdouble rotationFactor = 2 * PI / (ret->mNumVertices - 2);
 
 	GLdouble actualRotation = PI * 0.5; // Empieza en Pi medios (Pi/2)
 
-	for (int i = 0; i < ret->mNumVertices / 2 ; ++i)
+	for (int i = 0; i < ret->mNumVertices - 2; ++i)
 	{
 		GLdouble x = 0, y = 0;
 
@@ -517,8 +517,44 @@ Mesh* Mesh::generateStar3D(GLdouble re, GLuint np, GLdouble h)
 		actualRotation += rotationFactor;
 	}
 
-	//ret->vVertices.emplace_back(ret->vVertices[1]);
+	ret->vVertices.emplace_back(ret->vVertices[1]);
 
+	return ret;
+}
+
+Mesh* Mesh::generateStar3DTexCor(GLdouble re, GLuint np, GLdouble h)
+{
+	Mesh* ret = generateStar3D(re, np, h);
+	GLfloat mid = 0.5f;
+
+	ret->vTexCoords.reserve(3);
+	ret->vTexCoords.emplace_back(mid, mid);
+	ret->vTexCoords.emplace_back(mid, 1); //rojo
+
+	//ret->vTexCoords.emplace_back(0, 1);
+	//ret->vTexCoords.emplace_back(0, 1);
+
+
+	//ret->vTexCoords.emplace_back(0, mid);
+	//ret->vTexCoords.emplace_back(0, 1); //morado
+
+	//ret->vTexCoords.emplace_back(0, mid);
+	//ret->vTexCoords.emplace_back(0, 0);
+
+	//ret->vTexCoords.emplace_back(0, mid); // azul oscuro
+	//ret->vTexCoords.emplace_back(0, 1);
+
+	//ret->vTexCoords.emplace_back(0, mid);
+	//ret->vTexCoords.emplace_back(0, 0);
+	//ret->vTexCoords.emplace_back(0, mid);
+
+	//ret->vTexCoords.emplace_back(1, 0);
+	//ret->vTexCoords.emplace_back(1, mid);
+	//ret->vTexCoords.emplace_back(1, 1);
+	//ret->vTexCoords.emplace_back(mid, 1);
+
+	//ret->vTexCoords.emplace_back(0, mid);
+	//ret->vTexCoords.emplace_back(0, 0);
 	return ret;
 }
 

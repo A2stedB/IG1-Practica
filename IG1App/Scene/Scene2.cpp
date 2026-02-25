@@ -24,7 +24,7 @@ Scene2::init()
 
 	// Graphics objects (entities) of the scene
 	gObjects.push_back(new RGBAxes(400.0));
-	gObjects.push_back(new RGBTriangle(TriangleRadius, TriangleX, TriangleY, circleDiameter)); //Está en la posición {R,0} siendo R el diámetro del
+	gObjects.push_back(new RGBTriangle(TriangleRadius, TriangleX, TriangleY, circleDiameter)); //Est?en la posición {R,0} siendo R el diámetro del
 	gObjects.push_back(new RGBRectangle(squareSideLenth, squareSideLenth));
 	gObjects.push_back(new RegularPolygon(60, circleDiameter, {1,0,1,1}));
 
