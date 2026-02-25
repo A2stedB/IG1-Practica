@@ -5,6 +5,7 @@ Star3D::Star3D(GLdouble radioExterior, GLuint numPuntas, GLdouble altura)
 {
 	mMesh = Mesh::generateStar3D(radioExterior, numPuntas, altura);
     mModelMat180X = glm::rotate<float>(mModelMat, glm::pi<float>(), glm::vec3(1, 0, 0));
+
 }
 
 void Star3D::render(const glm::mat4& modelViewMat) const

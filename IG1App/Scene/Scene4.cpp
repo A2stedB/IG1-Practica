@@ -18,9 +18,9 @@ Scene4::init() // ESCENA VACÍA
 	gObjects.push_back(new RGBAxes(400.0));
 
 
-	Texture* tex = new Texture();
-	tex->load("../assets/images/baldosaC.png");
-	gObjects.push_back(new Ground(350,"texture", tex));
+	//Texture* tex = new Texture();
+	//tex->load("../assets/images/baldosaC.png");
+	//gObjects.push_back(new Ground(350,"texture", tex));
 
 	//Texture* outsideBoxTex = new Texture();
 	//outsideBoxTex->load("../assets/images/papelE.png");

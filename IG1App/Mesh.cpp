@@ -582,6 +582,22 @@ Mesh* Mesh::generateStar3DTexCor(GLdouble re, GLuint np, GLdouble h)
 
 	ret->vTexCoords.reserve(ret->mNumVertices);
 
+	ret->vTexCoords.emplace_back(0.5, 0.5);
+
+	GLuint numColores = 8;
+	GLuint numVerticesPorColor = ret->mNumVertices -1 / numColores; //con -1 quito el vertice de origen
+
+	constexpr GLfloat PI = glm::pi<GLfloat>();
+
+	GLfloat anguloTexturaIni = PI * 0.5;
+	Glfloat avancePorVertice = 
+	for (GLuint i = 0; i < numColores; ++i)
+	{
+		// Para cada color hago un bucle interior de todos los vertices en ese color,
+
+
+	}
+
 	return ret;
 	//for (int i = 0; i < (ret->mNumVertices - 2) / 2; i++) {
 	//	// circunferencia grande
