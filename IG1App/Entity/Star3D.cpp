@@ -49,7 +49,11 @@ void Star3D::update()
 {
 	mSelfAngleDeg += 1.0f;  // Grados por frame
 	mModelMat = glm::mat4(1.0f);
+	GLfloat rad = glm::radians(mSelfAngleDeg);
+	mModelMat = glm::rotate<float>(mModelMat, glm::radians(mSelfAngleDeg), glm::vec3(0, 1.0, 0)); // El orden IMPORTA
 	mModelMat = glm::rotate<float>(mModelMat, glm::radians(mSelfAngleDeg), glm::vec3(0, 0, 1.0));
+	//mModelMat = glm::translate<float>(mModelMat, glm::vec3(0 ,0, 0));
 
-	mModelMat = glm::rotate<float>(mModelMat, glm::radians(mSelfAngleDeg), glm::vec3(0, 1, 0)); //LMAOOOOOO
+
+	//mModelMat = glm::rotate<float>(mModelMat, glm::radians(mSelfAngleDeg), glm::vec3(0, 1, 0)); //LMAOOOOOO
 }
