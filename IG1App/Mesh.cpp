@@ -584,36 +584,25 @@ Mesh* Mesh::generateStar3DTexCor(GLdouble re, GLuint np, GLdouble h)
 
 	ret->vTexCoords.emplace_back(0.5, 0.5);
 
-	GLuint numColores = 8;
-	GLuint numVerticesPorColor = ret->mNumVertices -1 / numColores; //con -1 quito el vertice de origen
-
 	constexpr GLfloat PI = glm::pi<GLfloat>();
 
-	GLfloat anguloTexturaIni = PI * 0.5;
-	Glfloat avancePorVertice = 
-	for (GLuint i = 0; i < numColores; ++i)
+	GLfloat anguloTextura = PI * 0.5; // Este angulo va cambiando a lo largo de los bucles de abajo
+	GLfloat avancePorVertice = 2 * PI / ret->mNumVertices - 2;
+
+	for (GLuint i = 0; i < ret->mNumVertices -2; ++i)
 	{
-		// Para cada color hago un bucle interior de todos los vertices en ese color,
+		GLfloat textureX = 0.5 * cosf(anguloTextura) + 0.5f;
+		GLfloat textureY = 0.5 * sinf(anguloTextura) + 0.5f;
+
+		ret->vTexCoords.emplace_back(textureX, textureY);
+		anguloTextura += avancePorVertice;
 
 
 	}
 
+	ret->vTexCoords.emplace_back(ret->vTexCoords[1]);
+
 	return ret;
-	//for (int i = 0; i < (ret->mNumVertices - 2) / 2; i++) {
-	//	// circunferencia grande
-	//	x = re * cos(angleIni);
-	//	y = re * sin(angleIni);
-
-	//	// circunferencia pequeña
-	//	xi = ri * cos(angleIniInter);
-	//	yi = ri * sin(angleIniInter);
-
-	//	ret->vVertices.emplace_back(x, y, h);
-	//	ret->vVertices.emplace_back(xi, yi, h);
-
-	//	angleIni += angleToSum * 2;
-	//	angleIniInter += angleToSum * 2;
-	//}
 
 	
 }

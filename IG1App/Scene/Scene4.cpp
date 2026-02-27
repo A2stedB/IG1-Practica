@@ -28,7 +28,9 @@ Scene4::init() // ESCENA VACÍA
 	//insideBoxTex->load("../assets/images/container.jpg");
 	//gObjects.push_back(new BoxOutline(350, "texture", outsideBoxTex, insideBoxTex));
 
-	gObjects.push_back(new Star3D(50, 8, 50));
+	Texture* starTexture = new Texture();
+	starTexture->load("../assets/images/rueda.png");
+	gObjects.push_back(new Star3D(50, 8, 50, starTexture));
 
 
 

@@ -1,8 +1,10 @@
-#include "SingleColorEntity.h"
-class Star3D : public SingleColorEntity
+#include "EntityWithTexture.h"
+#include "Texture.h"
+
+class Star3D : public EntityWithTexture
 {
 public:
-	Star3D(GLdouble radioExterior, GLuint numPuntas, GLdouble altura);
+	Star3D(GLdouble radioExterior, GLuint numPuntas, GLdouble altura, Texture * texture);
 	void render(const glm::mat4& modelViewMat) const override;
 
 private:
