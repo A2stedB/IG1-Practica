@@ -21,7 +21,7 @@ Scene4::init() // ESCENA VACÍA
 	//gObjects.push_back(new Ground(400.0, tex));
 	//gObjects.push_back(new BoxOutline(200,"../assets/images/papelE.png", "../assets/images/container.jpg"));
 	//gObjects.push_back(new Star3D(100, 8, 100,"../assets/texturas/rueda.png"));
-	gObjects.push_back(new GlassParapet(100,"../assets/images/windowC.png"));
+	gObjects.push_back(new GlassParapet(100,"../assets/images/windowC.png",128));
 }
 
 void Scene4::update()
