@@ -1,45 +1,46 @@
 #include "BoxOutline.h"
+#include "Mesh.h"
 using namespace glm;
 
-BoxOutline::BoxOutline(GLdouble Lenght, const char* shader, Texture* outsideTexture, Texture* insideTexture) : EntityWithTexture(shader, outsideTexture)
+BoxOutline::BoxOutline(GLfloat length, const char* outside_texture, const char* inside_texture) :EntityWithTexture(outside_texture)
 {
-    insideTex = insideTexture;
-	mMesh = Mesh::generateBoxOutlineTexCor(Lenght);
+	mMesh = Mesh::generateBoxOutlineTexCor(length);
+	_inside = new Texture();
+	_inside->load(inside_texture);
 }
 
+BoxOutline::~BoxOutline()
+{
+	delete _inside;
+}
 void BoxOutline::render(const glm::mat4& modelViewMat) const
 {
-    if (mMesh != nullptr && mShader != nullptr) {
-        mat4 aMat = modelViewMat * mModelMat;
-        mShader->use();
-        upload(aMat);
 
-        if (mTexture != nullptr) {
-            mShader->setUniform("modulate", mModulate);
+	if (mMesh != nullptr && mShader != nullptr)
+	{
 
-            glEnable(GL_CULL_FACE);
+		mat4 aMat = modelViewMat * mModelMat;
 
-            glCullFace(GL_BACK); // Escondo las caras interiores para solo renderizar la exterior
+		mShader->use();
+		glEnable(GL_CULL_FACE);
+		upload(aMat);
+		if (mTexture != nullptr && _inside != nullptr)
+		{
+			mShader->setUniform("modulate", mModulate);
 
-            mTexture->bind(); //mTexture guarda la textura exterior de la caja
-            mMesh->render();
-            mTexture->unbind();
+			glCullFace(GL_BACK);
+			_inside->bind();     // detras
+			mMesh->render();
 
-            
-            glCullFace(GL_FRONT); // Ahora se hace justo lo contrario
+			glCullFace(GL_FRONT);
+			mTexture->bind();   // delante
+			mMesh->render();
 
-            insideTex->bind();
-            mMesh->render();
-            insideTex->unbind();
+			_inside->unbind();
+			mTexture->unbind();
+		}
+		else mMesh->render();
 
-
-            glDisable(GL_CULL_FACE);
-        }
-        else { // Por si no funciona la textura para que no crashee
-            glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-            mMesh->render();
-        }
-
-        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-    }
+		glDisable(GL_CULL_FACE);
+	}
 }

@@ -1,13 +1,14 @@
+#pragma once
+//#include "SingleColorEntity.h"
 #include "EntityWithTexture.h"
+#include "Texture.h"
 class BoxOutline : public EntityWithTexture
 {
-	public:
-	BoxOutline(GLdouble Lenght, const char* shader, Texture* outsideTexure, Texture* insideTexture);
-	~BoxOutline() { delete insideTex; };
-
-	void render(const glm::mat4& modelViewMat) const override;
-
 private:
-	Texture* insideTex = nullptr;
+	Texture* _inside;
+public:
+	BoxOutline(GLfloat length, const char* outside_texture, const char* inside_texture);
+	~BoxOutline();
+	void render(const glm::mat4& modelViewMat) const override;
 };
 

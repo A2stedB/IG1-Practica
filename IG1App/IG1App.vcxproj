@@ -147,9 +147,8 @@
     <ClInclude Include="Scene\Scene3.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="SingleColorEntity.h" />
-    <ClInclude Include="Star3D.h" />
+    <ClInclude Include="Entity\Star3D.h" />
     <ClInclude Include="Texture.h" />
-    <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Viewport.h" />
   </ItemGroup>
   <ItemGroup>
@@ -175,9 +174,8 @@
     <ClCompile Include="Scene\Scene3.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="SingleColorEntity.cpp" />
-    <ClCompile Include="Star3D.cpp" />
+    <ClCompile Include="Entity\Star3D.cpp" />
     <ClCompile Include="Texture.cpp" />
-    <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Viewport.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

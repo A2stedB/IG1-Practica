@@ -1,14 +1,33 @@
 #include "EntityWithTexture.h"
-#include "TextureManager.h"
+#include <string>
 using namespace glm;
 
-EntityWithTexture::EntityWithTexture(const char * shader, Texture* texture)
+EntityWithTexture::EntityWithTexture(const char* texture,const char* shader) :
+    mModulate(false),
+    mTexture(new Texture())
 {
+    //mTexture = new Texture();
+    mTexture->load(texture);
 	mShader = Shader::get(shader);
-    mTexture = texture;
-    /*mTexture->load("../assets/images/baldosaC.png");*/
- 
 }
+
+EntityWithTexture::EntityWithTexture(Texture* texture, const char* shader):
+    mModulate(false),
+    mTexture(texture)
+{
+    mShader = Shader::get(shader);
+}
+
+EntityWithTexture::~EntityWithTexture()
+{
+    delete mTexture;
+}
+
+void EntityWithTexture::setTexture(Texture* tex)
+{
+    mTexture = tex;
+}
+
 void EntityWithTexture::render(const glm::mat4& modelViewMat) const
 {
     if (mMesh != nullptr && mShader != nullptr) {
@@ -17,17 +36,14 @@ void EntityWithTexture::render(const glm::mat4& modelViewMat) const
 
         mShader->use();
         upload(aMat);
-
         if (mTexture != nullptr)
         {
-
             mShader->setUniform("modulate", mModulate);
             mTexture->bind();
             mMesh->render();
             mTexture->unbind();
         }
-        else  mMesh->render();
-        
+        else mMesh->render();
 
     }
 }

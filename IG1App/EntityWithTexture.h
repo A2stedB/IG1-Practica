@@ -5,13 +5,14 @@ class EntityWithTexture : public Abs_Entity
 {
 protected:
 
-	Texture* mTexture = nullptr;
-	bool mModulate = false;
+	Texture* mTexture;
+	bool mModulate;
 public:
 
-	EntityWithTexture(const char* shader = "texture", Texture* texture = nullptr);
-	~EntityWithTexture() { delete mTexture; };
-
+	EntityWithTexture(const char* texture,const char* shader = "texture");
+	EntityWithTexture(Texture* texture,const char* shader = "texture");
+	~EntityWithTexture();
+	void setTexture(Texture* tex);
 	virtual void render(const glm::mat4& modelViewMat) const override;
 
 };
