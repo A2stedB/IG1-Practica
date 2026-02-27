@@ -499,7 +499,7 @@ Mesh* Mesh::generateStar3D(GLdouble re, GLuint np, GLdouble h)
 
 	GLdouble actualRotation = PI * 0.5; // Empieza en Pi medios (Pi/2)
 
-	for (int i = 0; i < ret->mNumVertices - 2; ++i)
+	for (int i = 0; i < (ret->mNumVertices - 2); ++i)
 	{
 		GLdouble x = 0, y = 0;
 
@@ -527,9 +527,31 @@ Mesh* Mesh::generateStar3DTexCor(GLdouble re, GLuint np, GLdouble h)
 	Mesh* ret = generateStar3D(re, np, h);
 	GLfloat mid = 0.5f;
 
-	ret->vTexCoords.reserve(3);
+	GLdouble ri = 0.5 / 2;
+
+	constexpr GLdouble PI = glm::pi<GLdouble>();
+
+	const GLdouble rotationFactor = 2 * PI / (ret->mNumVertices - 2);
+
+	GLdouble actualRotation = PI * 0.5; // Empieza en Pi medios (Pi/2)
+
+	ret->vTexCoords.reserve(ret->mNumVertices);
 	ret->vTexCoords.emplace_back(mid, mid);
-	ret->vTexCoords.emplace_back(mid, 1); //rojo
+
+	for (int i = 0; i < ret->mNumVertices - 2; ++i)
+	{
+		GLdouble x = 0, y = 0;
+
+		x = 0.5 * cos(actualRotation) + 0.5;
+		y = 0.5 * sin(actualRotation) + 0.5;
+
+
+		ret->vTexCoords.emplace_back(x, y);
+
+		actualRotation += rotationFactor;
+	}
+
+	ret->vTexCoords.emplace_back(ret->vTexCoords[1]);
 
 	//ret->vTexCoords.emplace_back(0, 1);
 	//ret->vTexCoords.emplace_back(0, 1);
