@@ -1,39 +1,33 @@
-#include "GlassParapet.h"
-#include "Mesh.h"
-using namespace glm;
-GlassParapet::GlassParapet(GLdouble length, const char* texture, GLubyte alpha = 255) : EntityWithTexture(alpha)
-{
-	mMesh = Mesh::generateBoxOutlineTexCor(length);
+#include "Grass.h"
 
+Grass::Grass(GLdouble length, const char* texture, GLubyte alpha)
+{
+	mMesh = Mesh::generateRectangleTextCor(length, length, 1,1);
+	mTexture->load(texture, alpha);
 }
 
-GlassParapet::~GlassParapet() {
+Grass::~Grass() {
 	delete mTexture;
 	mTexture = nullptr;
 }
 
-void GlassParapet::render(const glm::mat4& modelViewMat) const
+void Grass::render(const glm::mat4& modelViewMat) const
 {
 	if (mMesh != nullptr)
 	{
-		mat4 aMat = modelViewMat * mModelMat;
+		glm::mat4 aMat = modelViewMat * mModelMat;
 		mShader->use();
-
 		if (mTexture != nullptr)
 		{
-			glEnable(GL_DEPTH_TEST); //Primero
+			glEnable(GL_DEPTH_TEST);
 			glDepthMask(GL_FALSE);
-
 			glEnable(GL_BLEND);
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 			//glBlendFunc(GL_CONSTANT_COLOR, GL_ONE_MINUS_CONSTANT_COLOR);
-
 			mTexture->bind();   // delante
-
 			mShader->setUniform("modulate", mModulate);
 			upload(aMat);
 			mMesh->render();
-
 			mTexture->unbind();
 			glDisable(GL_BLEND);
 			glDepthMask(GL_TRUE);

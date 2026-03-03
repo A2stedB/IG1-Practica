@@ -18,9 +18,16 @@ mTexture(new Texture())
     mShader = Shader::get(shader);
 }
 
-EntityWithTexture::EntityWithTexture(Texture* texture, const char* shader):
+EntityWithTexture::EntityWithTexture(Texture* texture, GLubyte alpha, const char* shader):
     mModulate(false),
     mTexture(texture)
+{
+    mShader = Shader::get(shader);
+}
+
+EntityWithTexture::EntityWithTexture(GLubyte alpha, const char* shader) :
+    mModulate(false),
+    mTexture(new Texture())
 {
     mShader = Shader::get(shader);
 }

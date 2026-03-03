@@ -1,8 +1,9 @@
 #include "Scene4.h"
 #include "Ground.h"
-#include "BoxOutline.h"
-#include "Star3D.h"
-#include "GlassParapet.h"
+//#include "BoxOutline.h"
+//#include "Star3D.h"
+//#include "GlassParapet.h"
+#include "Photo.h"
 void
 Scene4::init() // ESCENA VAC�A
 {
@@ -16,10 +17,12 @@ Scene4::init() // ESCENA VAC�A
 	//Texture* tex = new Texture();
 	//tex->load("../assets/images/baldosaC.png");
 	gObjects.push_back(new RGBAxes(400.0));
-	//gObjects.push_back(new Ground(400.0, "../assets/images/baldosaC.png"));
-	//gObjects.push_back(new Ground(400.0, tex));
+	gObjects.push_back(new Ground(400.0, "../assets/images/baldosaC.png"));
 	//gObjects.push_back(new BoxOutline(200,"../assets/images/papelE.png", "../assets/images/container.jpg"));
-	gObjects.push_back(new GlassParapet(200, "../assets/images/windowC.png", 128));
+	/*gObjects.push_back(new GlassParapet(200, "../assets/images/windowC.png", 128));*/
+
+	Photo* foto = new Photo(100.0, 100.0);
+	gObjects.push_back(foto);
 }
 
 void Scene4::update()

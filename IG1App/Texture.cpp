@@ -73,4 +73,19 @@ Texture::setWrap(GLuint wp) // GL_REPEAT, GL_CLAMP_TO_EDGE, ...
 
 void Texture::loadColorBuffer(GLsizei width, GLsizei height, GLuint buffer)
 {
+
+	if (mId == 0) init();
+		
+	mWidth = width;
+	mHeight = height;
+
+
+	glReadBuffer(buffer); // Front o back buffer, GL_FRONT o GL_BACK
+
+	glBindTexture(GL_TEXTURE_2D, mId);
+
+	// Se copian los pixeles del buffer activo a la textura.
+	glCopyTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 0, 0, mWidth, mHeight, 0);
+
+	glBindTexture(GL_TEXTURE_2D, 0);
 }

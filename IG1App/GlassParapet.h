@@ -5,7 +5,7 @@ class GlassParapet : public EntityWithTexture
 {
 public:
 	GlassParapet(GLdouble length,const char* texture, GLubyte alpha);
-	~GlassParapet() {};
+	~GlassParapet() override;
 	void render(const glm::mat4& modelViewMat) const override;
 };
 
