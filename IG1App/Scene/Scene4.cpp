@@ -4,7 +4,7 @@
 #include "Star3D.h"
 #include "GlassParapet.h"
 void
-Scene4::init() // ESCENA VACÍA
+Scene4::init() // ESCENA VACï¿½A
 {
 	setGL(); // OpenGL settings
 

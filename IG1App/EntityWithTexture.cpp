@@ -6,9 +6,16 @@ EntityWithTexture::EntityWithTexture(const char* texture,const char* shader) :
     mModulate(false),
     mTexture(new Texture())
 {
-    //mTexture = new Texture();
     mTexture->load(texture);
 	mShader = Shader::get(shader);
+}
+
+EntityWithTexture::EntityWithTexture(const char* texture, GLint alpha, const char* shader):
+mModulate(false),
+mTexture(new Texture())
+{
+    mTexture->load(texture,alpha);
+    mShader = Shader::get(shader);
 }
 
 EntityWithTexture::EntityWithTexture(Texture* texture, const char* shader):
