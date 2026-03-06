@@ -1,5 +1,8 @@
+#ifndef _H_Star3D_H_
+#define _H_Star3D_H_
+
 #include "EntityWithTexture.h"
-#include "Texture.h"
+
 
 class Star3D : public EntityWithTexture
 {
@@ -14,3 +17,5 @@ private:
 	GLfloat mAngle = 0.0f;
 	glm::vec3 mCoordinates = { 300,10,-200 };
 };
+
+#endif // _H_Star3D_H_

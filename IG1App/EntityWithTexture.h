@@ -1,3 +1,6 @@
+#ifndef ENTITY_WITH_TEXTURE_H
+#define ENTITY_WITH_TEXTURE_H
+
 #include "Entity.h"
 
 class Texture;
@@ -19,4 +22,6 @@ public:
 	virtual void render(const glm::mat4& modelViewMat) const override;
 
 };
+
+#endif // ENTITY_WITH_TEXTURE_H
 

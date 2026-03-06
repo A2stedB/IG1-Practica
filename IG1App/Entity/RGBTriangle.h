@@ -7,7 +7,7 @@ class RGBTriangle :
 
 private:
     GLfloat mSelfAngleDeg{0.0};
-    GLfloat circleDiameter;
+    GLfloat circleDiameter = 0;
 
 
    public:

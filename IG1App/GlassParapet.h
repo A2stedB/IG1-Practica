@@ -1,4 +1,6 @@
-#pragma once
+#ifndef GLASS_PARAPET_H
+#define GLASS_PARAPET_H
+
 #include "EntityWithTexture.h"
 
 class Texture;
@@ -12,3 +14,4 @@ public:
 	void render(const glm::mat4& modelViewMat) const override;
 };
 
+#endif // GLASS_PARAPET_H

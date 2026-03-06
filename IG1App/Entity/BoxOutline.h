@@ -1,3 +1,6 @@
+#ifndef BOX_OUTLINE_H
+#define BOX_OUTLINE_H
+
 #include "EntityWithTexture.h"
 
 class Texture;
@@ -5,7 +8,7 @@ class Texture;
 class BoxOutline : public EntityWithTexture
 {
 private:
-	Texture* _inside;
+	Texture* _inside = nullptr;
 public:
 	BoxOutline(GLfloat length, const char* outside_texture, const char* inside_texture);
 	~BoxOutline();
@@ -15,3 +18,4 @@ private:
 	glm::vec3 mCoordinates{ 300, 10, -200 };
 };
 
+#endif // BOX_OUTLINE_H
