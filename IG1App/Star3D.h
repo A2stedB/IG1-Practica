@@ -1,5 +1,6 @@
 #include "EntityWithTexture.h"
-#include "Texture.h"
+
+class Texture;
 
 class Star3D : public EntityWithTexture
 {

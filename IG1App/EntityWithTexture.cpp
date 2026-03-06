@@ -1,4 +1,5 @@
 #include "EntityWithTexture.h"
+#include "Texture.h"
 #include <string>
 using namespace glm;
 
@@ -35,6 +36,7 @@ EntityWithTexture::EntityWithTexture(GLubyte alpha, const char* shader) :
 EntityWithTexture::~EntityWithTexture()
 {
     delete mTexture;
+	mTexture = nullptr;
 }
 
 void EntityWithTexture::setTexture(Texture* tex)

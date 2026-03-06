@@ -1,5 +1,6 @@
 #include "BoxOutline.h"
 #include "Mesh.h"
+#include "Texture.h"
 using namespace glm;
 
 BoxOutline::BoxOutline(GLfloat length, const char* outside_texture, const char* inside_texture) :EntityWithTexture(outside_texture)
@@ -15,6 +16,7 @@ BoxOutline::BoxOutline(GLfloat length, const char* outside_texture, const char* 
 BoxOutline::~BoxOutline()
 {
 	delete _inside;
+	_inside = nullptr;
 }
 void BoxOutline::render(const glm::mat4& modelViewMat) const
 {

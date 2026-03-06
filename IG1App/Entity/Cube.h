@@ -1,4 +1,3 @@
-#pragma once
 #include "SingleColorEntity.h"
 class Cube :
     public SingleColorEntity

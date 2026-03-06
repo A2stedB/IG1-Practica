@@ -1,5 +1,7 @@
 #include "Photo.h"
 #include "IG1App.h"
+#include "Texture.h"
+
 Photo::Photo(GLdouble width, GLdouble height, GLubyte alpha) : EntityWithTexture(new Texture(), alpha)
 {
     mMesh = Mesh::generateRectangleTextCor(width, height, 1, 1);

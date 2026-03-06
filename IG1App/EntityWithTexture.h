@@ -1,12 +1,13 @@
 #include "Entity.h"
-#include "Texture.h"
-#pragma once
+
+class Texture;
+
 class EntityWithTexture : public Abs_Entity
 {
 protected:
 
-	Texture* mTexture;
-	bool mModulate;
+	Texture* mTexture = nullptr;
+	bool mModulate = false;
 public:
 
 	EntityWithTexture(const char* texture,const char* shader = "texture");

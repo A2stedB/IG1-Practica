@@ -1,6 +1,9 @@
 #pragma once
 #include "EntityWithTexture.h"
-#include "Texture.h"
+
+class Texture;
+
+
 class GlassParapet : public EntityWithTexture
 {
 public:

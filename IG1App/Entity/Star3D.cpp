@@ -1,5 +1,6 @@
 #include "Star3D.h"
 
+
 using namespace glm;
 
 Star3D::Star3D(GLdouble radioExterior, GLuint numPuntas, GLdouble altura, const char* texture) : EntityWithTexture(texture)

@@ -1,6 +1,4 @@
-#pragma once
 #include "EntityWithTexture.h"
-//#include "Entity.h"
 
 class Ground : public EntityWithTexture
 {

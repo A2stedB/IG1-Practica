@@ -1,7 +1,7 @@
-#pragma once
-//#include "SingleColorEntity.h"
 #include "EntityWithTexture.h"
-#include "Texture.h"
+
+class Texture;
+
 class BoxOutline : public EntityWithTexture
 {
 private:

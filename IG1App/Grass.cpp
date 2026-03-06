@@ -1,4 +1,5 @@
 #include "Grass.h"
+#include "Texture.h"
 
 Grass::Grass(GLdouble length, const char* texture, GLubyte alpha)
 {

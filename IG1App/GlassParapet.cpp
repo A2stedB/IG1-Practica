@@ -1,5 +1,6 @@
 #include "GlassParapet.h"
 #include "Mesh.h"
+#include "Texture.h"
 using namespace glm;
 GlassParapet::GlassParapet(GLdouble length, const char* texture, GLubyte alpha = 255) : EntityWithTexture(texture, alpha)
 {

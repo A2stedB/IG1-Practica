@@ -1,5 +1,5 @@
-#pragma once
 #include "EntityWithTexture.h"
+
 class Grass :public EntityWithTexture
 {
 public:
