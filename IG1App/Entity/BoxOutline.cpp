@@ -9,7 +9,7 @@ BoxOutline::BoxOutline(GLfloat length, const char* outside_texture, const char* 
 	_inside = new Texture();
 	_inside->load(inside_texture);
 
-	mModelMat = glm::translate(mModelMat, glm::vec3(0, (length / 2) + 10, 0)) * glm::translate(mModelMat, glm::vec3(-5,0,3));
+	mModelMat = glm::translate(mModelMat, glm::vec3(0, (length / 2), 0)) * glm::translate(mModelMat, glm::vec3(-5,0,3));
 	moveTo(mCoordinates);
 }
 
@@ -41,8 +41,8 @@ void BoxOutline::render(const glm::mat4& modelViewMat) const
 			glCullFace(GL_FRONT);
 			mTexture->bind();   // delante
 			mMesh->render();
-
 			mTexture->unbind();
+
 		}
 		else mMesh->render();
 

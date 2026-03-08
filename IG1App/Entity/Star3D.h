@@ -15,7 +15,7 @@ private:
 
 	glm::mat4 mModelMat180X;
 	GLfloat mAngle = 0.0f;
-	glm::vec3 mCoordinates = { 300,10,-200 };
+	glm::vec3 mCoordinates = { 300,20,-200 };
 };
 
 #endif // _H_Star3D_H_

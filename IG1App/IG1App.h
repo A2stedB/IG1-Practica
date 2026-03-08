@@ -66,7 +66,8 @@ protected:
 	int mWinH = 600;               // window's height
 
 	//const GLfloat FRAME_DURATION = 1;
-	bool mUpdateEnabled = false;
+	bool mToogleUpdate = false;
+	bool mUpdate = false;
 	GLdouble mNextUpdate; // No necesita inicializarse ya que su valor varía cada frame
 };
 

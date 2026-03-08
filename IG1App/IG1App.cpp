@@ -88,7 +88,7 @@ IG1App::run() // enters the main event processing loop
 		// Redisplay the window if needed
 
 		GLdouble preUpdateTime = glfwGetTime(); // glfwGetTimes devuelve los segundos en formato Segs.decimales (Ej : 12.230)
-		if (mUpdateEnabled) {
+		if (mToogleUpdate || mUpdate) {
 
 			// Se actualizan las entidades
 			mScenes[mCurrentScene]->update();
@@ -101,6 +101,8 @@ IG1App::run() // enters the main event processing loop
 
 			//Si la variación de tiempo es menor que FrameDuration se hace un delay del resto, en caso contrario se continua con el bucle
 			mNextUpdate = postUpdateTime - preUpdateTime;
+
+			mUpdate = false; // Para la "u" MINUSCULA 
 		}
 
 		if (mNeedsRedisplay) {
@@ -248,7 +250,10 @@ IG1App::key(unsigned int key)
 			mCamera->set2D();
 			break;
 		case 'u':
-			mUpdateEnabled = !mUpdateEnabled;
+			mUpdate = true;
+			break;
+		case 'U':
+			mToogleUpdate = !mToogleUpdate;
 			break;
 		default:
 			if (key >= '0' && key <= '9') {

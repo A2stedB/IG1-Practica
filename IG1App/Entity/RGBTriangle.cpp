@@ -3,6 +3,7 @@
 RGBTriangle::RGBTriangle(GLdouble radius, GLint Xpos, GLint Ypos ,GLfloat circleDiameter) : circleDiameter(circleDiameter)
 {
 	mMesh = Mesh::createRGBTriangle(radius,Xpos, Ypos);
+    mModelMat = glm::translate(mModelMat, glm::vec3(circleDiameter, 0, 0));
 }
 
 void RGBTriangle::update()
