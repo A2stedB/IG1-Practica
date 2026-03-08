@@ -22,7 +22,7 @@ Scene4::init()
 
 void Scene4::update()
 {
-	for (auto& entity : gObjects)
+	for (Abs_Entity* entity : gObjects)
 	{
 		entity->update();
 	}

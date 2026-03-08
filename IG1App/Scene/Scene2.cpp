@@ -32,7 +32,7 @@ Scene2::init()
 
 void Scene2::update()
 {
-	for (auto& entity : gObjects)
+	for (Abs_Entity* entity : gObjects)
 	{
 		entity->update();
 	}

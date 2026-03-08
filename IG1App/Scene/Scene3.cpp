@@ -15,7 +15,7 @@ Scene3::init()
 
 void Scene3::update()
 {
-	for (auto& entity : gObjects)
+	for (Abs_Entity* entity : gObjects)
 	{
 		entity->update();
 	}
