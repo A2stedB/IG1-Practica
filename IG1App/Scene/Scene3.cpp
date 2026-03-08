@@ -12,11 +12,3 @@ Scene3::init()
 	
 
 }
-
-void Scene3::update()
-{
-	for (Abs_Entity* entity : gObjects)
-	{
-		entity->update();
-	}
-}

@@ -48,7 +48,12 @@ Scene::resetGL()
 	glDisable(GL_DEPTH_TEST);     // disable Depth test
 }
 
-void Scene::update() {}
+void Scene::update() {
+	for (Abs_Entity* entity : gObjects)
+	{
+		entity->update();
+	}
+}
 
 
 void

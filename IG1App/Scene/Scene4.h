@@ -4,6 +4,5 @@ class Scene4 :
 {
 public:
     void init() override;
-    void update() override;
 };
 

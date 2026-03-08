@@ -19,11 +19,3 @@ Scene4::init()
 	Photo* foto = new Photo(100.0, 100.0);
 	gObjects.push_back(foto);
 }
-
-void Scene4::update()
-{
-	for (Abs_Entity* entity : gObjects)
-	{
-		entity->update();
-	}
-}

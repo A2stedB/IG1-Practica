@@ -29,11 +29,3 @@ Scene2::init()
 	gObjects.push_back(new RegularPolygon(60, circleDiameter, {1,0,1,1}));
 
 }
-
-void Scene2::update()
-{
-	for (Abs_Entity* entity : gObjects)
-	{
-		entity->update();
-	}
-}

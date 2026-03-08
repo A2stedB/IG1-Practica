@@ -5,6 +5,5 @@ class Scene3 :
 
 public:
     void init() override;
-    void update() override;
 };
 
